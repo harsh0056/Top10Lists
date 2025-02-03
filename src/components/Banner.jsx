@@ -7,8 +7,8 @@ const Banner = () => {
   return (
     <div className=' bg-black px-4 py-32 mx-auto flex items-center justify-center'>
         <div className='text-white text-center'>
-            <h1 className='lg:text-7xl text-5xl leading-snug font-bold mb-5'>Welcome to Our Blog</h1>
-            <p className='text-gray-100 lg:w-3/5 mx-auto mb-5'>Start your blog today and join a community of writers and readers who are passionate about sharing their stories and ideas. We offer everything you need to get started, from helpful tips and tutorials.</p>
+            <h1 className='lg:text-7xl text-5xl leading-snug font-bold mb-5'>Welcome to The Top 10 <span className="text-orange-500">Lists</span></h1>
+            <p className='text-gray-100 lg:w-3/5 mx-auto mb-5'>We post Top 10 lists about everything in the world accrding to what is trending  </p>
 
             {/* btn here */}
             <div>
