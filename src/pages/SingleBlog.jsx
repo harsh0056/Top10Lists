@@ -3,11 +3,27 @@ import { useLoaderData, useParams } from 'react-router-dom'
 import { FaUser } from "react-icons/fa";
 import { FaClock } from 'react-icons/fa6';
 import Sidebar from '../components/Sidebar';
+import { useLocation } from 'react-router-dom';
 
 
 
 const SingleBlog = () => {
-    const data = useLoaderData();
+    
+    const { id } = useParams(); 
+    const location = useLocation();
+    
+    const { blog } = location.state || {};
+
+    if (!blog) {
+      return (
+        <div className='py-36 bg-black text-white text-center px-4'>
+                <h1 className='text-5xl leading-snug font-bold mb-5'>NO Blog found for blog id : {id}</h1>
+            </div>
+      )
+    }
+
+
+
     console.log(data)
     const { title, author, content, image, reading_time, published_date } = data[0];
     console.log(title)
@@ -19,11 +35,11 @@ const SingleBlog = () => {
 
             <div className=' my-12 flex flex-col md:flex-row gap-12'>
                 <div className='lg:w-3/4 mx-auto'>
-                    <div><img src={image} alt="" className='mx-auto w-full rounded mb-5' /></div>
-                    <h2 className='text-3xl font-bold mb-4 text-blue-600 cursor-pointer'>{title}</h2>
-                    <p className='mb-3 text-gray-600'><FaUser className='inline-flex items-center mr-2' /> {author} | {published_date}</p>
-                    <p className='mb-6 text-gray-600'><FaClock className='inline-flex items-center mr-2' /> {reading_time}</p>
-                    <p className='text-sm text-gray-500 mb-6'>{content} </p>
+                    <div><img src={blog.image} alt="" className='mx-auto w-full rounded mb-5' /></div>
+                    <h2 className='text-3xl font-bold mb-4 text-blue-600 cursor-pointer'>{blog.title}</h2>
+                    <p className='mb-3 text-gray-600'><FaUser className='inline-flex items-center mr-2' /> {blog.author} | {blog.published_date}</p>
+                    <p className='mb-6 text-gray-600'><FaClock className='inline-flex items-center mr-2' /> {blog.reading_time}</p>
+                    <p className='text-sm text-gray-500 mb-6'>{blog.content} </p>
                     <div className='text-base text-gray-500'>
                         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis sapiente necessitatibus unde ullam porro veritatis id suscipit facilis accusantium deserunt quibusdam voluptatem magni provident iste, ex quisquam dignissimos nostrum non?
                             <br /> <br />

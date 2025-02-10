@@ -38,7 +38,7 @@ const Navbar = () => {
         <header className="fixed bg-black top-0 left-0 right-0 text-white">
             <nav className="px-4 max-w-7xl mx-auto flex justify-between items-center py-4">
                 <a href="/" className="text-xl font-bold text-white">
-                    The Top 10 <span className="text-orange-500">Lists</span>
+                    The Top 10 <span className="text-orange-500"></span>
                 </a>
 
                 {/* navitems */}

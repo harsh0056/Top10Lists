@@ -17,58 +17,54 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
 
   return (
     <div className="px-4 mb-8 border-b-2 py-5 text-gray-900 font-semibold">
-      {/* 
-        1) Horizontal scroll container 
-      */}
-      <div className="overflow-x-auto no-scrollbar">
-        {/* 
-          2) Inner container for all categories 
-             - Make sure it doesn't clip the absolutely positioned dropdown
-        */}
-        <div className="inline-flex space-x-6 whitespace-nowrap relative overflow-visible">
-          {/* "All" button */}
+  {/* 
+    1) Restrict horizontal scroll to just x-axis
+    2) Ensure vertical overflow is visible
+  */}
+  <div className="overflow-x-auto overflow-y-visible no-scrollbar">
+    <div className="inline-flex space-x-6 whitespace-nowrap relative overflow-visible">
+      {/* "All" button */}
+      <button
+        onClick={() => onSelectCategory(null)}
+        className={`px-4 py-2 flex-shrink-0 ${activeCategory ? '' : 'active-button'}`}
+      >
+        All
+      </button>
+
+      {categories.map((category) => (
+        <div
+          key={category.name}
+          className="relative group"
+          onMouseEnter={() => setHoveredCategory(category.name)}
+          onMouseLeave={() => setHoveredCategory(null)}
+        >
           <button
-            onClick={() => onSelectCategory(null)}
-            className={`px-4 py-2 flex-shrink-0 ${activeCategory ? '' : 'active-button'}`}
+            className={`px-4 py-2 flex-shrink-0 ${
+              activeCategory === category.name ? 'active-button' : ''
+            }`}
+            onClick={() => onSelectCategory(category.name)}
           >
-            All
+            {category.name}
           </button>
 
-          {/* Category buttons with dropdown */}
-          {categories.map((category) => (
-            <div
-              key={category.name}
-              className="relative group"
-              onMouseEnter={() => setHoveredCategory(category.name)}
-              onMouseLeave={() => setHoveredCategory(null)}
-            >
-              <button
-                className={`px-4 py-2 flex-shrink-0 ${
-                  activeCategory === category.name ? 'active-button' : ''
-                }`}
-                onClick={() => onSelectCategory(category.name)}
-              >
-                {category.name}
-              </button>
-
-              {hoveredCategory === category.name && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
-                  {category.subcategories.map((sub) => (
-                    <div
-                      key={sub}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => onSelectCategory(sub)}
-                    >
-                      {sub}
-                    </div>
-                  ))}
+          {hoveredCategory === category.name && (
+            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
+              {category.subcategories.map((sub) => (
+                <div
+                  key={sub}
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={() => onSelectCategory(sub)}
+                >
+                  {sub}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
+          )}
         </div>
-      </div>
+      ))}
     </div>
+  </div>
+</div>
   );
 };
 
