@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 const CategorySelection = ({ onSelectCategory, activeCategory }) => {
@@ -48,11 +49,11 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
           </button>
 
           {hoveredCategory === category.name && (
-            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
+            <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50 border">
               {category.subcategories.map((sub) => (
                 <div
                   key={sub}
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700"
                   onClick={() => onSelectCategory(sub)}
                 >
                   {sub}
