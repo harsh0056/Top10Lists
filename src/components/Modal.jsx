@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../server/firebase-config';
 
 const Modal = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -11,7 +13,19 @@ const Modal = ({ isOpen, onClose }) => {
     e.preventDefault();
     const auth = getAuth();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
+      
+      if (!userDoc.exists()) {
+        throw new Error('User not found in database');
+      }
+      
+      localStorage.setItem('user', JSON.stringify({
+        uid: userCredential.user.uid,
+        email: userCredential.user.email,
+        ...userDoc.data()
+      }));
+      
       onClose();
     } catch (error) {
       setError(error.message);

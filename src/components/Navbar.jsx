@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Link, NavLink } from "react-router-dom";
 
 // react icons
@@ -7,6 +8,26 @@ import Modal from "./Modal";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+    const handleLogout = async () => {
+        const auth = getAuth();
+        try {
+            await signOut(auth);
+            localStorage.removeItem('user');
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
+    };
     // const [isActive, setIsActive] = useState(false);
 
     // menu btn toggle
@@ -71,8 +92,14 @@ const Navbar = () => {
                     <a href="/" className="hover:text-orange-500"> <FaMeta /></a>
                     <a href="/" className="hover:text-orange-500"><FaDribbble /></a>
                     <a href="/" className="hover:text-orange-500"><FaTwitter /></a>
-                    <button onClick={openLoginModal} className="bg-orange-500 px-6 py-2 font-medium rounded hover:bg-white hover:text-orange-500 transition-all ease-in duration-200 ml-4">Log in</button>
-                    <button onClick={openSignupModal} className="bg-white text-orange-500 px-6 py-2 font-medium rounded hover:bg-orange-500 hover:text-white transition-all ease-in duration-200 ml-4">Sign up</button>
+                    {user ? (
+                        <button onClick={handleLogout} className="bg-orange-500 px-6 py-2 font-medium rounded hover:bg-white hover:text-orange-500 transition-all ease-in duration-200 ml-4">Log out</button>
+                    ) : (
+                        <>
+                            <button onClick={openLoginModal} className="bg-orange-500 px-6 py-2 font-medium rounded hover:bg-white hover:text-orange-500 transition-all ease-in duration-200 ml-4">Log in</button>
+                            <button onClick={openSignupModal} className="bg-white text-orange-500 px-6 py-2 font-medium rounded hover:bg-orange-500 hover:text-white transition-all ease-in duration-200 ml-4">Sign up</button>
+                        </>
+                    )}
                 </div>
                 
                 {/* modal components */}
