@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 const CategorySelection = ({ onSelectCategory, activeCategory }) => {
@@ -16,25 +17,16 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
   return (
-    <div className="px-4 mb-8 border-b-2 py-5 text-gray-900 font-semibold">
-      {/* 
-        1) Horizontal scroll container 
-      */}
+    <div className="w-full">
       <div className="overflow-x-auto no-scrollbar">
-        {/* 
-          2) Inner container for all categories 
-             - Make sure it doesn't clip the absolutely positioned dropdown
-        */}
         <div className="inline-flex space-x-6 whitespace-nowrap relative overflow-visible">
-          {/* "All" button */}
           <button
             onClick={() => onSelectCategory(null)}
-            className={`px-4 py-2 flex-shrink-0 ${activeCategory ? '' : 'active-button'}`}
+            className={`px-4 py-2 hover:text-orange-500 ${activeCategory ? '' : 'text-orange-500'}`}
           >
             All
           </button>
 
-          {/* Category buttons with dropdown */}
           {categories.map((category) => (
             <div
               key={category.name}
@@ -43,8 +35,8 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
               onMouseLeave={() => setHoveredCategory(null)}
             >
               <button
-                className={`px-4 py-2 flex-shrink-0 ${
-                  activeCategory === category.name ? 'active-button' : ''
+                className={`px-4 py-2 hover:text-orange-500 ${
+                  activeCategory === category.name ? 'text-orange-500' : ''
                 }`}
                 onClick={() => onSelectCategory(category.name)}
               >
@@ -52,11 +44,11 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
               </button>
 
               {hoveredCategory === category.name && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50 border">
                   {category.subcategories.map((sub) => (
                     <div
                       key={sub}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-gray-700"
                       onClick={() => onSelectCategory(sub)}
                     >
                       {sub}
