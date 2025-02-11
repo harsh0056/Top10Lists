@@ -24,14 +24,23 @@ const Navbar = () => {
     ]
 
     // for modal for login button
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+    const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
-    const openModal = () => {
-      setIsModalOpen(true);
+    const openLoginModal = () => {
+      setIsLoginModalOpen(true);
     };
   
-    const closeModal = () => {
-      setIsModalOpen(false);
+    const closeLoginModal = () => {
+      setIsLoginModalOpen(false);
+    };
+
+    const openSignupModal = () => {
+      setIsSignupModalOpen(true);
+    };
+  
+    const closeSignupModal = () => {
+      setIsSignupModalOpen(false);
     };
 
     return (
@@ -62,11 +71,13 @@ const Navbar = () => {
                     <a href="/" className="hover:text-orange-500"> <FaMeta /></a>
                     <a href="/" className="hover:text-orange-500"><FaDribbble /></a>
                     <a href="/" className="hover:text-orange-500"><FaTwitter /></a>
-                    <button onClick={openModal} className="bg-orange-500 px-6 py-2 font-medium rounded hover:bg-white hover:text-orange-500 transition-all ease-in duration-200 ml-4">Log in</button>
+                    <button onClick={openLoginModal} className="bg-orange-500 px-6 py-2 font-medium rounded hover:bg-white hover:text-orange-500 transition-all ease-in duration-200 ml-4">Log in</button>
+                    <button onClick={openSignupModal} className="bg-white text-orange-500 px-6 py-2 font-medium rounded hover:bg-orange-500 hover:text-white transition-all ease-in duration-200 ml-4">Sign up</button>
                 </div>
                 
-                {/* modal component */}
-                <Modal isOpen={isModalOpen} onClose={closeModal} />
+                {/* modal components */}
+                <Modal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
+                <SignupModal isOpen={isSignupModalOpen} onClose={closeSignupModal} />
 
                 {/* mobile menu */}
                 <div className="md:hidden">
