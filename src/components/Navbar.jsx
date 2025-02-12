@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Link, NavLink } from "react-router-dom";
+import SignupModal from "./SignupModal";
 
 // react icons
 import { FaBars, FaDribbble, FaMeta, FaTwitter, FaXmark } from "react-icons/fa6";
