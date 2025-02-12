@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { Link, NavLink } from "react-router-dom";
 import SignupModal from "./SignupModal";
+import { ThemeContext } from "../App";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 // react icons
 import { FaBars, FaDribbble, FaMeta, FaTwitter, FaXmark } from "react-icons/fa6";
@@ -10,6 +12,7 @@ import Modal from "./Modal";
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [user, setUser] = useState(null);
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
     useEffect(() => {
         const auth = getAuth();
@@ -90,6 +93,9 @@ const Navbar = () => {
                 {/* menu icons for large devices */}
 
                 <div className="text-white lg:flex gap-4 items-center hidden">
+                    <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-700">
+                        {theme === 'dark' ? <FaSun className="w-5 h-5"/> : <FaMoon className="w-5 h-5"/>}
+                    </button>
                     <a href="/" className="hover:text-orange-500"> <FaMeta /></a>
                     <a href="/" className="hover:text-orange-500"><FaDribbble /></a>
                     <a href="/" className="hover:text-orange-500"><FaTwitter /></a>
