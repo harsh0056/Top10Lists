@@ -40,7 +40,7 @@ const BlogPage = () => {
     return (
         <div>
       {/* Category Bar */}
-      <div className="sticky top-0 bg-white z-40">
+      <div className="sticky top-0 bg-white z-50">
         <CategorySelection onSelectCategory={handleCategoryChange} activeCategory={activeCategory} />
       </div>
 

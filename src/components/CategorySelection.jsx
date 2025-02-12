@@ -17,9 +17,9 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
   return (
-    <div className="px-4 mb-8 border-b py-5 text-gray-900 font-semibold">
+    <div className="px-4 mb-8 border-b py-5 text-gray-900 font-semibold bg-white">
       <div className="w-full">
-        <div className="flex flex-wrap gap-6">
+        <div className="flex flex-wrap gap-6 justify-center items-center">
           <button
             onClick={() => onSelectCategory(null)}
             className={`px-4 py-2 flex-shrink-0 ${activeCategory ? '' : 'active-button'}`}
@@ -44,7 +44,7 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
               </button>
   
               {hoveredCategory === category.name && (
-                <div className="fixed mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
+                <div className="absolute mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
                   {category.subcategories.map((sub) => (
                     <div
                       key={sub}
