@@ -8,9 +8,9 @@ const Sidebar = () => {
     const [popularBlog] = useState(staticBlogData);
 
     return (
-      <div className="sticky top-24">
+      <div>
         {/* Latest Blogs */}
-        <div className="w-full">
+        <div>
           <h3 className="text-2xl font-semibold px-4">Latest Blogs</h3>
           <div>
             {popularBlog.slice(0, 5).map(blog => (
