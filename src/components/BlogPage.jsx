@@ -12,23 +12,23 @@ const BlogPage = () => {
     const pageSize = 12; // Number of blogs per page
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [activeCategory, setActiveCategory] = useState(null);
-  
+
     // 1) Filter blogs by selected category (if any)
     const filteredBlogs = selectedCategory
       ? blogData.filter((blog) => blog.category === selectedCategory)
       : blogData;
-  
+
     // 2) Handle pagination (slice the filtered array)
     const totalBlogs = filteredBlogs.length;
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const blogsToShow = filteredBlogs.slice(startIndex, endIndex);
-  
+
     // 3) Handle page change
     const handlePageChange = (pageNumber) => {
       setCurrentPage(pageNumber);
     };
-  
+
     // 4) Handle category change
     const handleCategoryChange = (category) => {
       setSelectedCategory(category);
@@ -36,7 +36,7 @@ const BlogPage = () => {
       // Reset to first page whenever a new category is chosen
       setCurrentPage(1);
     };
-  
+
     return (
         <div>
       {/* Category Bar */}
@@ -45,23 +45,26 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Cards + Sidebar */}
-      <div className="flex flex-col lg:flex-row gap-12">
-        <BlogCards
+      <div className="flex flex-row gap-12">
+        <div className="flex-grow"> {/*This ensures the BlogCards takes up available space */}
+          <BlogCards
           blogs={blogsToShow}
           currentPage={currentPage}
           selectedCategory={selectedCategory}
           pageSize={pageSize}
         />
-        
-        <Sidebar />
-      </div>
 
-      <Pagination
+        <Pagination
        currentPage={currentPage}
        onPageChange={handlePageChange}
        totalBlogs={filteredBlogs.length} 
        pageSize={pageSize}
       />
+        </div>
+        <div className="shrink-0"> {/* This prevents the sidebar from growing */}
+          <Sidebar />
+        </div>
+      </div>
         </div>
     );
 };
