@@ -8,7 +8,7 @@ const BlogCards = ({ blogs, currentPage, pageSize, selectedCategory }) => {
     .slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
-    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
       {filteredBlogs.map((blog) => (
         <Link
           to={`blogs/${blog.id}`}

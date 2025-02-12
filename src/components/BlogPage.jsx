@@ -45,15 +45,19 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Cards + Sidebar */}
-      <div className="flex flex-col lg:flex-row gap-12">
-        <BlogCards
-          blogs={blogsToShow}
-          currentPage={currentPage}
-          selectedCategory={selectedCategory}
-          pageSize={pageSize}
-        />
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-[80%] w-full">
+          <BlogCards
+            blogs={blogsToShow}
+            currentPage={currentPage}
+            selectedCategory={selectedCategory}
+            pageSize={pageSize}
+          />
+        </div>
         
-        <Sidebar />
+        <div className="lg:w-[20%] w-full">
+          <Sidebar />
+        </div>
       </div>
 
       <Pagination
