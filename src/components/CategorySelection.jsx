@@ -32,7 +32,12 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
               key={category.name}
               className="relative group"
               onMouseEnter={() => setHoveredCategory(category.name)}
-              onMouseLeave={() => setHoveredCategory(null)}
+              onMouseLeave={(e) => {
+                const relatedTarget = e.relatedTarget;
+                if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
+                  setHoveredCategory(null);
+                }
+              }}
             >
               <button
                 className={`px-4 py-2 flex-shrink-0 ${
@@ -44,7 +49,10 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
               </button>
   
               {hoveredCategory === category.name && (
-                <div className="absolute mt-2 w-48 bg-white shadow-lg border rounded-lg z-50">
+                <div 
+                  className="absolute mt-2 w-48 bg-white shadow-lg border rounded-lg z-50"
+                  onMouseEnter={() => setHoveredCategory(category.name)}
+                >
                   {category.subcategories.map((sub) => (
                     <div
                       key={sub}
