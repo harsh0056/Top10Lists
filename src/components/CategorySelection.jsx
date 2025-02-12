@@ -18,8 +18,8 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
 
   return (
     <div className="px-4 mb-8 border-b py-5 text-gray-900 font-semibold">
-      <div className="overflow-x-auto no-scrollbar">
-        <div className="inline-flex space-x-6 whitespace-nowrap">
+      <div className="w-full">
+        <div className="flex flex-wrap gap-6">
           <button
             onClick={() => onSelectCategory(null)}
             className={`px-4 py-2 flex-shrink-0 ${activeCategory ? '' : 'active-button'}`}
