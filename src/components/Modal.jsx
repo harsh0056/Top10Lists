@@ -33,9 +33,9 @@ const Modal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className={`fixed inset-0 w-full h-full flex items-center justify-center z-[9999] ${isOpen ? '' : 'hidden'}`}>
+    <div className={`fixed inset-0 w-full h-full flex items-center justify-center z-[99999] ${isOpen ? '' : 'hidden'}`}>
       <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
-      <div className="relative z-[10000] w-[500px]">
+      <div className="relative z-[100000] w-[500px]">
         <div className="bg-indigo-700 text-center p-5 h-96 rounded shadow-xl">
           <h2 className="text-xl font-semibold mb-4 mt-6 mb-5 uppercase text-white">Please Login Here!</h2>
           {error && <p className="text-red-500 mb-4">{error}</p>}

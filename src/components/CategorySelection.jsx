@@ -50,7 +50,7 @@ const CategorySelection = ({ onSelectCategory, activeCategory }) => {
   
               {hoveredCategory === category.name && (
                 <div 
-                  className="absolute mt-2 w-48 bg-white shadow-lg border rounded-lg z-50"
+                  className="absolute mt-2 w-48 bg-white shadow-lg border rounded-lg z-40"
                   onMouseEnter={() => setHoveredCategory(category.name)}
                 >
                   {category.subcategories.map((sub) => (
