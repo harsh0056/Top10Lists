@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
@@ -28,7 +27,7 @@ const Sidebar = () => {
             ))}
           </div>
         </div>
-        
+
         {/* Popular Blogs */}
         <div>
           <h3 className="text-2xl font-semibold mt-20 px-4">Popular Now</h3>
