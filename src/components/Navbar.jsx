@@ -55,7 +55,7 @@ const Navbar = () => {
     const openLoginModal = () => {
       setIsLoginModalOpen(true);
     };
-  
+
     const closeLoginModal = () => {
       setIsLoginModalOpen(false);
     };
@@ -63,13 +63,13 @@ const Navbar = () => {
     const openSignupModal = () => {
       setIsSignupModalOpen(true);
     };
-  
+
     const closeSignupModal = () => {
       setIsSignupModalOpen(false);
     };
 
     return (
-        <header className="fixed bg-black top-0 left-0 right-0 text-white">
+        <header className="fixed w-full bg-white shadow-md z-50"> {/* Only the provided change is implemented here */}
             <nav className="px-4 max-w-7xl mx-auto flex justify-between items-center py-4">
                 <a href="/" className="text-xl font-bold text-white">
                     The Top 10 <span className="text-orange-500"></span>
@@ -108,7 +108,7 @@ const Navbar = () => {
                         </>
                     )}
                 </div>
-                
+
                 {/* modal components */}
                 <Modal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
                 <SignupModal isOpen={isSignupModalOpen} onClose={closeSignupModal} />

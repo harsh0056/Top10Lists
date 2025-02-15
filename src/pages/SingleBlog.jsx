@@ -23,8 +23,8 @@ const SingleBlog = () => {
                 <h1 className='text-5xl leading-snug font-bold mb-5'>Single Blog</h1>
             </div>
 
-            <div className='max-w-7xl mx-auto my-12 flex flex-col md:flex-row gap-12'>
-                <div className='lg:w-3/4 mx-auto'>
+            <div className='max-w-7xl mx-auto my-12 flex flex-col lg:flex-row gap-12 px-4 lg:px-0'>
+                <div className='w-full lg:w-3/4 mx-auto'>
                     <div>
                         <img src={blog.image} alt="" className='w-full rounded mb-5' />
                     </div>
