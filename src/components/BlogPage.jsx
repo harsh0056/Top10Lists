@@ -15,7 +15,7 @@ const BlogPage = () => {
   
     // 1) Filter blogs by selected category (if any)
     const filteredBlogs = selectedCategory
-      ? blogData.filter((blog) => blog.category.toLowerCase() === selectedCategory.toLowerCase())
+      ? blogData.filter((blog) => blog.category === selectedCategory)
       : blogData;
   
     // 2) Handle pagination (slice the filtered array)
@@ -45,15 +45,19 @@ const BlogPage = () => {
       </div>
 
       {/* Blog Cards + Sidebar */}
-      <div className="flex flex-col lg:flex-row gap-12">
-        <BlogCards
-          blogs={blogsToShow}
-          currentPage={currentPage}
-          selectedCategory={selectedCategory}
-          pageSize={pageSize}
-        />
+      <div className="flex flex-col lg:flex-row gap-8 px-4 lg:px-0">
+        <div className="w-full lg:w-3/4">
+          <BlogCards
+            blogs={blogsToShow}
+            currentPage={currentPage}
+            selectedCategory={selectedCategory}
+            pageSize={pageSize}
+          />
+        </div>
         
-        <Sidebar />
+        <div className="w-full lg:w-1/4">
+          <Sidebar />
+        </div>
       </div>
 
       <Pagination
