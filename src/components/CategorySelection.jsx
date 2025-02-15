@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const CategorySelection = ({ onSelectCategory, activeCategory }) => {
   const categories = [
-    { name: "Bizarre", subcategories: ["Weird News", "Mysteries", "Strange Events"] },
+    { name: "Bizare", subcategories: ["Weird News", "Mysteries", "Strange Events"] },
     { name: "Entertainment", subcategories: ["Music", "TV Shows", "Celebrities"] },
     { name: "Movies", subcategories: ["Hollywood", "Bollywood", "Reviews"] },
     { name: "General Knowledge", subcategories: ["Science", "History", "Geography"] },
