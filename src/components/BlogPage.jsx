@@ -15,7 +15,7 @@ const BlogPage = () => {
   
     // 1) Filter blogs by selected category (if any)
     const filteredBlogs = selectedCategory
-      ? blogData.filter((blog) => blog.category === selectedCategory)
+      ? blogData.filter((blog) => blog.category.toLowerCase() === selectedCategory.toLowerCase())
       : blogData;
   
     // 2) Handle pagination (slice the filtered array)
